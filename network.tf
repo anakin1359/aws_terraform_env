@@ -66,5 +66,24 @@ resource "aws_route_table_association" "public_route_table_1a" {
 
 # resource "aws_route_table_association" "public-route-table-1c" {
 #     route_table_id = aws_route_table.public_route_table.id
-#     subnet_id = aws_subnet.public_subnet_1c.id
+#     subnet_id      = aws_subnet.public_subnet_1c.id
 # }
+
+# ---------------------------
+# Internet Gateway
+# ---------------------------
+resource "aws_internet_gateway" "internet_gateway" {
+    vpc_id = aws_vpc.main.id
+
+    tags = {
+        Name    = "${var.project}_${var.environment}_internet_gateway"
+        Project = var.project
+        Env     = var.environment
+    }
+}
+
+resource "aws_route" "public_route_table_internet_gateway" {
+    route_table_id         = aws_route_table.public_route_table.id
+    destination_cidr_block = "0.0.0.0/0"
+    gateway_id             = aws_internet_gateway.internet_gateway.id
+}
