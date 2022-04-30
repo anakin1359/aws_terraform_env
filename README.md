@@ -29,3 +29,15 @@ terraform plan --var-file=./config.tfvars
 ```
 terraform apply --var-file=./config.tfvars -auto-approve
 ```
+
+### Get EC2 ami image
+---
+* ex ) ubuntu 18.04 LTS
+```
+aws ec2 describe-images \
+    --region ap-northeast-1 \
+    --owners 099720109477 \
+    --query "reverse(sort_by(Images, &CreationDate))[:1]" \
+    --filters "Name=name,Values=ubuntu/images/hvm-ssd/ubuntu-bionic-18.04-amd64-server-*" \
+    --output table(base)
+```
