@@ -40,4 +40,7 @@ terraform.rc
 # .terraform.lock.hcl is not managed
 .terraform.lock.hcl
 
+# ec2-access-key
+id_rsa*
+
 # End of https://www.toptal.com/developers/gitignore/api/terraform
