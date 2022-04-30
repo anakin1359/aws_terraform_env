@@ -13,14 +13,16 @@ zone       = "ZONE"
 ```
 <br>
 
-### Note: Always run "terraform init" if data.tf or config.tfvars is changed.
+### terraform execution
+---
+* Note: Always run "terraform init" if data.tf or config.tfvars is changed.
 ```
 terraform init
 ```
 <br>
 
-### Always run "plan" when creating, modifying, or deleting resources.
-### When executing "plan" and "apply", refer to the variables in "config.tfvars".
+* Always run "plan" when creating, modifying, or deleting resources.
+* When executing "plan" and "apply", refer to the variables in "config.tfvars".
 ```
 terraform plan --var-file=./config.tfvars
 ```
