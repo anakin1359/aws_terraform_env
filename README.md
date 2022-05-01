@@ -1,6 +1,9 @@
-### aws_terraform_env
+## aws_terraform_env
 ---
+<br>
+
 ### config.tfvars
+---
 ```
 # ---------------------------
 # Configure the AWS Provider Variable
@@ -38,6 +41,7 @@ terraform plan --var-file=./config.tfvars
 ```
 terraform apply --var-file=./config.tfvars -auto-approve
 ```
+<br>
 
 ### Get EC2 ami image
 ---
@@ -50,3 +54,23 @@ aws ec2 describe-images \
     --filters "Name=name,Values=ubuntu/images/hvm-ssd/ubuntu-bionic-18.04-amd64-server-*" \
     --output table(base)
 ```
+<br>
+
+### RDS creating/deleting
+---
+Settings at creation
+```
+deletion_protection = true
+skip_final_snapshot = false
+```
+* Execute terraform plan => apply in this order.
+
+<br>
+
+Settings at deletion
+```
+deletion_protection = false
+skip_final_snapshot = true
+```
+* Execute terraform plan => apply in this order.
+* Then comment out all the "RDS Instance" items and run terraform plan => apply again.
