@@ -10,6 +10,15 @@ access_key = "ACCESS_KEY"
 secret_key = "SECRET_KEY"
 region     = "REGION"
 zone       = "ZONE"
+
+# [ General ]
+project     = "SAMPLE_PJ"
+environment = "SAMPLE_ENV"
+
+# [ RDS connection ]
+db_name     = "SAMPLE_DATABASE"
+db_username = "SAMPLE_USER"
+db_password = "SAMPLE_PASSWORD"
 ```
 <br>
 
